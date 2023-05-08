@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  add_to_project:
+    name: Add to Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Add to Project
+        uses: actions/add-to-project@v1
+        with:
+          project_name: ProvaActions
+          column_name: In progress
+          issue_number: 123
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - run: npm install
+      - name: Run tests
+        run: npm run test
+  your_choice:
+    name: Your choice
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Your choice
+        uses: {YOUR CHOSEN ACTION}

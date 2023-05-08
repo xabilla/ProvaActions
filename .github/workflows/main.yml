@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Add to Project
-        uses: actions/add-to-project@v1
+        uses: actions/add-to-project@v0.5.0
         with:
           project_name: ProvaActions
           column_name: In progress

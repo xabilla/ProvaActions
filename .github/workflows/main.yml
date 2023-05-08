@@ -1,20 +1,20 @@
-name: CI/CD Pipeline
+name: Exemple
 
 on: [push]
 
 jobs:
-  add_to_project:
-    name: Add to Project
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Add to Project
-        uses: actions/add-to-project@v0.5.0
+      - uses: actions/add-to-project@RELEASE_VERSION
         with:
-          project_name: ProvaActions
-          column_name: In progress
-          issue_number: 123
+          # You can target a project in a different organization
+          # to the issue
+          project-url: https://github.com/orgs/<orgName>/projects/<projectNumber>
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: bug, needs-triage
+          label-operator: OR
   test:
     name: Test
     runs-on: ubuntu-latest
